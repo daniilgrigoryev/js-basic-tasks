@@ -16,15 +16,32 @@ let formatDate = function(params, mask){
 	// params.day
 	// params.year
 	// params.mask
-	let reg = /\s*-\s*/;
+	// let reg = /\s*-\s*/;
 
 	let month = params.month < 10 ? `0${params.month}`: params.month;
 	let day = params.day < 10 ? `0${params.day}`: params.day;
+	let year = params.year;
+	let hui = mask.split('-');
 
-	mask.split(reg);
+	var pushPush = [];
 
+	for(let i = 0; i < hui.length; i++){
+		switch(hui[i]){
+			case 'dd':
+				pushPush.push(day);
+			break;
+			case 'mm':
+				pushPush.push(month);
+			break;
+			case 'yyyy':
+				pushPush.push(year);
+			break;
+			default:
+				console.log('ты лох');
+		}
+	}
 
-	console.log(day, month, params.year, mask);
+	console.log(pushPush);
 
 };
 
@@ -33,4 +50,4 @@ formatDate({
 	month: getCurrentMonth,
 	day: getIndexWeek,
 	year: getFullYear
-}, 'mm-dd-yyyy');
+}, 'yyyy-mm-dd');
