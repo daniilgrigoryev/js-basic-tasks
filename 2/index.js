@@ -6,44 +6,47 @@ let getFullYear = getCurrentDate.getFullYear();
 
 let formatDate = function(params, mask){
 
-	let month = params.month < 10 ?  parseInt(`0${params.month}`): params.month;
-	let day = params.day < 10 ? parseInt(`0${params.day}`): params.day;
+	let month = params.month < 10 ? `0${params.month}`: params.month;
+	let day = params.day < 10 ? `0${params.day}`: params.day;
 	let year = params.year;
 
+	// let chipsMask = mask.split(/\.|\-|\//);
+	// let matchDevideres = mask.match(/\.|\-|\//ig);
 
-	let chipsMask = mask.split(/\.|\-|\//);
-	let matchDevideres = mask.match(/\.|\-|\//ig);
+	// let dateFormated; 
 
+	mask = mask.replace(/yyyy/, year).replace(/dd/, day).replace(/mm/, month);
 
-	let dataFormatted = [];
-
-	for(let i = 0; i < chipsMask.length; i++){
-		switch(chipsMask[i]){
-			case 'dd':
-				dataFormatted.push(day);
-			break;
-			case 'mm':
-				dataFormatted.push(month);
-			break;
-			case 'yyyy':
-				dataFormatted.push(year);
-			break;
-			default:
-				console.log('nothing');
-		}
-	}
-
-	dataFormatted.splice(1, 0, matchDevideres[0]);
-	dataFormatted.splice(3, 0, matchDevideres[1]);
-
-	console.log(dataFormatted);
-	// console.log(pushPush);
-
+	return mask;
 };
 
 
-formatDate({
+var mask_1 =  formatDate({
 	month: getCurrentMonth,
 	day: getCurrentDay,
 	year: getFullYear
-}, 'yyyy.mm/dd');
+}, 'dd-mm-yyyy');
+
+var mask_2 =  formatDate({
+	month: getCurrentMonth,
+	day: getCurrentDay,
+	year: getFullYear
+}, 'dd/mm/yyyy');
+
+var mask_3 =  formatDate({
+	month: getCurrentMonth,
+	day: getCurrentDay,
+	year: getFullYear
+}, 'mm-dd-yyy');
+
+var mask_4 =  formatDate({
+	month: getCurrentMonth,
+	day: getCurrentDay,
+	year: getFullYear
+}, 'mm/dd/yyy');
+
+
+console.log(mask_1);
+console.log(mask_2);
+console.log(mask_3);
+console.log(mask_4);
