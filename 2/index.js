@@ -1,53 +1,49 @@
-let getCurrentDay = new Date();
+let getCurrentDate = new Date();
 
-let getIndexWeek = getCurrentDay.getDay();
-let getCurrentHours = getCurrentDay.getHours();
-let getCurrentMinutes = getCurrentDay.getMinutes();
-let getCurrentMonth = getCurrentDay.getMonth();
-let getFullYear = getCurrentDay.getFullYear();
-
-// console.log(`${getCurrentMonth}-${getIndexWeek}-${getFullYear}`); // mm-dd-yyyy
-// console.log(); // mm/dd/yyyy
-// console.log(); // dd-mm-yyyy
-// console.log(); // dd/mm/yyyy
+let getCurrentDay = getCurrentDate.getDate();
+let getCurrentMonth = getCurrentDate.getMonth();
+let getFullYear = getCurrentDate.getFullYear();
 
 let formatDate = function(params, mask){
-	// params.month
-	// params.day
-	// params.year
-	// params.mask
-	// let reg = /\s*-\s*/;
 
-	let month = params.month < 10 ? `0${params.month}`: params.month;
-	let day = params.day < 10 ? `0${params.day}`: params.day;
+	let month = params.month < 10 ?  parseInt(`0${params.month}`): params.month;
+	let day = params.day < 10 ? parseInt(`0${params.day}`): params.day;
 	let year = params.year;
-	let hui = mask.split('-');
 
-	var pushPush = [];
 
-	for(let i = 0; i < hui.length; i++){
-		switch(hui[i]){
+	let chipsMask = mask.split(/\.|\-|\//);
+	let matchDevideres = mask.match(/\.|\-|\//ig);
+
+
+	let dataFormatted = [];
+
+	for(let i = 0; i < chipsMask.length; i++){
+		switch(chipsMask[i]){
 			case 'dd':
-				pushPush.push(day);
+				dataFormatted.push(day);
 			break;
 			case 'mm':
-				pushPush.push(month);
+				dataFormatted.push(month);
 			break;
 			case 'yyyy':
-				pushPush.push(year);
+				dataFormatted.push(year);
 			break;
 			default:
-				console.log('ты лох');
+				console.log('nothing');
 		}
 	}
 
-	console.log(pushPush);
+	dataFormatted.splice(1, 0, matchDevideres[0]);
+	dataFormatted.splice(3, 0, matchDevideres[1]);
+
+	console.log(dataFormatted);
+	// console.log(pushPush);
 
 };
 
 
 formatDate({
 	month: getCurrentMonth,
-	day: getIndexWeek,
+	day: getCurrentDay,
 	year: getFullYear
-}, 'yyyy-mm-dd');
+}, 'yyyy.mm/dd');
