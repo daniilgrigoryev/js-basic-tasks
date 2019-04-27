@@ -9,6 +9,6 @@ function findAreaTriangle(sides) {
   return Math.sqrt(multiply * perimeter);
 }
 
-let area = findAreaTriangle([4, 5, 6]);
+let area = findAreaTriangle([5, 6, 7]);
 
 console.log(area);
