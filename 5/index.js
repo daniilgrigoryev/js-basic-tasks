@@ -6,8 +6,9 @@ function animateString(str, time){
 	body.appendChild(element);
 
 	setInterval(() => {
-		str = str[str.length - 1] + str.substring(0, str.length - 1);
+		str = str[str.length - 1] + str.slice(0, str.length - 1);
+		element.innerHTML = str.split('').reverse().join("");;
 	}, time);
 }
 
-animateString('▁ ▂ ▃ ▄ ▅ ▆ ▇ █ ', 30);
+animateString('✺▬▬▬▬', 100);
