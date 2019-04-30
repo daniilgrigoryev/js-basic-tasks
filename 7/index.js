@@ -14,9 +14,6 @@ function yearsFirstJanSun(startYear, endYear){
   return listYears;
 }
 
-
 let listYear = yearsFirstJanSun(2000, 2050);
-
-
 
 console.log(listYear);

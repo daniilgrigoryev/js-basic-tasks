@@ -7,7 +7,7 @@ function animateString(str, time){
 
 	setInterval(() => {
 		str = str[str.length - 1] + str.slice(0, str.length - 1);
-		element.innerHTML = str.split('').reverse().join("");;
+		element.innerHTML = str.split('').reverse().join("");
 	}, time);
 }
 
