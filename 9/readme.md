@@ -1,0 +1,1 @@
+### Write a JavaScript program to calculate days left until next Novy God.
